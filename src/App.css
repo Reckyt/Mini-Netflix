@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "28 Days Later";
+  font-size: normal;
+  font-weight: normal;
+  src: url("28 Days Later.woff");
+}
+
+@font-face {
+  font-family: "Wicked Scary Movie";
+  font-size: normal;
+  font-weight: normal;
+  src: url("WickedScaryMovie.woff");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Wicked Scary Movie";
+}
+
+div {
+  overflow: hidden;
+}
+h3 {
+  font-family: "28 Days Later";
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.fa-faSpinner {
+  color: #a81818;
+  margin: 10rem auto;
+}
