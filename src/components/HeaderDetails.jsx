@@ -26,28 +26,28 @@ class HeaderDetails extends Component {
     this.calcVote();
     const imgSrc = `${IMAGE_BASE_URL}/${POSTER_SIZE}/${this.props.imgSrc}`;
     return (
-      <div className='headerDetails'>
-        <div className='badge-decoration'>{this.props.status} </div>
-        <div className='headerDetails--poster'>
+      <div className="headerDetails">
+        <div className="badge-decoration">{this.props.status} </div>
+        <div className="headerDetails--poster">
           <img
-            className='headerDetails--poster__img'
+            className="headerDetails--poster__img"
             src={imgSrc}
-            alt='poster'
+            alt="poster"
           />
         </div>
-        <div className='headerDetails--container'>
-          <h3 className='headerDetails--container__tilte'>
+        <div className="headerDetails--container">
+          <h3 className="headerDetails--container__tilte">
             {this.props.mTitle}
           </h3>
-          <p className='headerDetails--container__desc'>{this.props.mDesc}</p>
-          <div className='headerDetails--info'>
+          <p className="headerDetails--container__desc">{this.props.mDesc}</p>
+          <div className="headerDetails--info">
             <Container
-              iconName='clock'
+              iconName="hourglass-half"
               content={calcTime(this.props.runtime)}
             />
             <Stars fakeArray1={this.fakeArray1} fakeArray2={this.fakeArray2} />
             <Container
-              iconName='money'
+              iconName="money"
               content={convertMoney(this.props.revenue)}
             />
           </div>

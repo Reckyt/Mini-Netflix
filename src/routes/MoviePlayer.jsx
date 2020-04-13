@@ -149,7 +149,7 @@ class MoviePlayer extends Component {
   render() {
     const { movies, selectedMovie } = this.state;
     return (
-      <div className='moviePlayer'>
+      <div className="moviePlayer">
         {this.state.loading ? (
           <Spinner />
         ) : (

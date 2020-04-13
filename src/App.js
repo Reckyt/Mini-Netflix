@@ -6,8 +6,9 @@ import { Provider } from "react-redux";
 import "./App.css";
 
 import { Header, Spinner } from "./components";
-import { Home, Details, NotFound, MoviePlayer} from "./routes";
+import { Home, Details, NotFound, MoviePlayer, Login } from "./routes";
 import { API_URL, API_KEY, IMAGE_BASE_URL, BACKDROP_SIZE } from "./config";
+import { initFirebase } from "./Utils/firebase-config";
 import store from "./store";
 
 class App extends Component {
@@ -25,10 +26,10 @@ class App extends Component {
 
   async componentDidMount() {
     try {
+      initFirebase();
       const {
         data: { results, page, total_pages },
       } = await this.loadMovies();
-      console.log("res", results);
       this.setState({
         movies: results,
         loading: false,
@@ -55,7 +56,6 @@ class App extends Component {
       const {
         data: { results, page, total_pages },
       } = await this.loadMovies();
-      console.log("res", results);
       this.setState({
         movies: [...this.state.movies, ...results],
         loading: false,
@@ -66,9 +66,8 @@ class App extends Component {
         mDesc: results[0].overview,
       });
     } catch (e) {
-      console.log("erroe load more", e);
+      console.log("error load more", e);
     }
-    console.log("load");
   };
 
   searchMovie = () => {
@@ -84,7 +83,6 @@ class App extends Component {
           const {
             data: { results, page, total_pages },
           } = await this.searchMovie();
-          console.log("res", results);
           this.setState({
             movies: results,
             loading: false,
@@ -106,7 +104,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div className='App'>
+          <div className="App">
             <Header badge={badge} />
             {!this.state.image ? (
               <Spinner />
@@ -114,7 +112,7 @@ class App extends Component {
               <Switch>
                 <Route
                   exact
-                  path='/'
+                  path="/"
                   render={() => (
                     <Home
                       {...this.state}
@@ -123,9 +121,10 @@ class App extends Component {
                     />
                   )}
                 />
-                <Route exact path='/player' component={MoviePlayer} />
-                <Route exact path='/player/:id' component={MoviePlayer} />
-                <Route exact path='/:id' component={Details} />
+                <Route exact path="/player" component={MoviePlayer} />
+                <Route exact path="/player/:id" component={MoviePlayer} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/:id" component={Details} />
                 <Route component={NotFound} />
               </Switch>
             )}

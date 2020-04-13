@@ -10,6 +10,7 @@ class HomeComponent extends Component {
   }
   render() {
     const { mTitle, mDesc, image, movies, loading } = this.props;
+
     return (
       <div>
         <HeaderImg title={mTitle} overview={mDesc} imgSrc={image} />
